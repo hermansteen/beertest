@@ -1,38 +1,159 @@
 .App {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-rows: 10vh 90vh;
+      grid-template-rows: 10vh 90vh;
+}
+
+input[type=text] {
+  width: 100%;
+  height: 4vh;
+  font-family: "Bebas Neue", cursive;
+  font-size: 3vh;
+  text-align: center;
+  border-radius: 20px;
+  border: 1px solid black;
+}
+
+.cardDisplay {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-row: 2;
+      grid-row-start: 2;
+  -ms-grid-columns: (1fr)[3];
+      grid-template-columns: repeat(3, 1fr);
+  -ms-grid-rows: repat(auto, 1fr);
+      grid-template-rows: repat(auto, 1fr);
+  grid-gap: 1vh;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin: 1vh;
+  margin-bottom: 1vh;
+}
+
+.header {
+  -ms-grid-column: 1;
+      grid-column-start: 1;
+  -ms-grid-row: 1;
+      grid-row-start: 1;
+  grid-row-end: 2;
+  height: 10vh;
+  position: fixed;
+  width: 100%;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (1fr)[6];
+      grid-template-columns: repeat(6, 1fr);
+  -ms-grid-rows: 1fr;
+      grid-template-rows: 1fr;
+  top: 0;
+  z-index: 1;
+}
+
+#about {
+  -ms-grid-row: 1;
+      grid-row-start: 1;
+  -ms-grid-column: 1;
+      grid-column-start: 1;
+  grid-column-end: 1;
+  height: 100%;
+}
+
+#contact {
+  -ms-grid-row: 1;
+      grid-row-start: 1;
+  -ms-grid-column: 2;
+      grid-column-start: 2;
+  grid-column-end: 2;
+  height: 100%;
+}
+
+#about p, #contact p, #logo p {
+  background-color: rgba(0, 0, 0, 0.95);
+  color: #b67600;
+  font-size: 1.5em;
+  height: 10vh;
+  padding: 0px;
+  margin: 0px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+#about p:hover, #contact p:hover {
   color: white;
+  background-color: #232323;
+  background-color: rgba(0, 0, 0, 0.7);
 }
 
-.App-link {
-  color: #61dafb;
+#button {
+  -ms-grid-column: 6;
+      grid-column-start: 6;
+  grid-column-end: 6;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.95);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: left;
+      -ms-flex-pack: left;
+          justify-content: left;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  text-align: left;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+#button p:hover {
+  color: Black;
+  background-color: #b67600;
 }
+
+#searchDiv {
+  -ms-grid-column: 3;
+      grid-column-start: 3;
+  grid-column-end: 6;
+  background-color: rgba(0, 0, 0, 0.95);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  text-align: center;
+  padding: 1vh;
+}
+
+button {
+  background-color: #b67600;
+  color: black;
+  font-family: "Bebas Neue", cursive;
+  font-size: 1.5em;
+  height: 5vh;
+  width: 10vh;
+  border-radius: 10%;
+  margin: 0px;
+  padding: 0px;
+}
+
+button:hover {
+  background-color: #232323;
+  color: #b67600;
+  border: 1px solid #b67600;
+}
+/*# sourceMappingURL=App.css.map */

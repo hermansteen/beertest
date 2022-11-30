@@ -1,0 +1,112 @@
+$fontCommon: 'Bebas Neue', cursive;
+$baseOrangeColor: rgb(182, 118, 0);
+$baseBackgroundColor: rgb(35,35,35);
+
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+h2, p {
+    font-family: $fontCommon;
+}
+
+h2 {
+    font-size: 25px;
+}
+
+p {
+    font-size: 18px;
+}
+
+.beer-card {
+    display: grid; 
+  
+    grid-template-rows: repeat(3, 1fr);
+    grid-template-columns: repeat(6, 1fr);
+    
+    height: 100%;
+    width: 100%; 
+    border: 2px solid $baseBackgroundColor;
+    border-radius: 10px; 
+    background-color: $baseBackgroundColor;
+}
+
+.beer-card:hover {
+    border: 2px solid $baseOrangeColor;
+    background-color: $baseOrangeColor;
+
+    #name h2 {
+        color: white;
+    }
+}
+
+#name {
+    grid-row-start: 1;
+    grid-column-start: 1; 
+    grid-row-end: 2;
+    grid-column-end: 5; 
+
+    border-radius: 10px 0px 0px 0px;
+    width: 100%;
+    padding: 0px; 
+       
+    background: rgb(35, 35, 35);
+    background: -moz-linear-gradient(138deg, rgba(35,35,35,1) 40%, rgba(74,74,74,1) 60%, rgba(122,122,122,1) 100%);
+    background: -webkit-linear-gradient(138deg, rgba(35,35,35,1) 40%, rgba(74,74,74,1) 60%, rgba(122,122,122,1) 100%);
+    background: linear-gradient(138deg, rgba(35,35,35,1) 40%, rgba(74,74,74,1) 60%, rgba(122,122,122,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#373737",endColorstr="#7a7a7a",GradientType=1);
+    
+    color: $baseOrangeColor;
+    padding-left: 1vh;
+    //border: 1px solid $baseBackgroundColor;
+}
+#name p {
+    color: white;
+    padding-top:0px;
+    margin-top: -5px;
+    margin-bottom: 0px;
+    padding-bottom: 0px;
+}
+
+#name h2 {
+    color: $baseOrangeColor;
+    padding-top:0px;
+    margin-top: 1vh;
+    padding-bottom: 0px;
+    margin-bottom: 0px;
+}
+  
+#img {
+    grid-row-start: 1;
+    grid-column-start: 5;
+  
+    grid-row-end: 4;
+    grid-column-end: 7;
+    background-color: white;
+    border-radius: 0px 10px 10px 0px;
+    //border: 1px solid $baseBackgroundColor;
+    /*center content*/
+}
+
+#img img {
+    max-width: 100px;
+    max-height: 200px;
+    margin: auto;
+    display: block;    
+}
+  
+#info {
+    grid-row-start: 2;
+    grid-column-start: 1;
+  
+    grid-row-end: 4;
+    grid-column-end: 5;
+    background-color: rgb(200, 200, 200);
+    border-radius: 0px 0px 0px 10px;
+    padding-left: 1vh;
+    padding-right: 1vh;
+    margin-top: -1vh;
+    //border: 1px  solid $baseBackgroundColor;
+}

@@ -1,0 +1,106 @@
+a {
+  text-decoration: none;
+  color: black;
+}
+
+h2, p {
+  font-family: "Bebas Neue", cursive;
+}
+
+h2 {
+  font-size: 25px;
+}
+
+p {
+  font-size: 18px;
+}
+
+.beer-card {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-rows: (1fr)[3];
+      grid-template-rows: repeat(3, 1fr);
+  -ms-grid-columns: (1fr)[6];
+      grid-template-columns: repeat(6, 1fr);
+  height: 100%;
+  width: 100%;
+  border: 2px solid #232323;
+  border-radius: 10px;
+  background-color: #232323;
+}
+
+.beer-card:hover {
+  border: 2px solid #b67600;
+  background-color: #b67600;
+}
+
+.beer-card:hover #name h2 {
+  color: white;
+}
+
+#name {
+  -ms-grid-row: 1;
+      grid-row-start: 1;
+  -ms-grid-column: 1;
+      grid-column-start: 1;
+  grid-row-end: 2;
+  grid-column-end: 5;
+  border-radius: 10px 0px 0px 0px;
+  width: 100%;
+  padding: 0px;
+  background: #232323;
+  background: linear-gradient(138deg, #232323 40%, #4a4a4a 60%, #7a7a7a 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#373737",endColorstr="#7a7a7a",GradientType=1);
+  color: #b67600;
+  padding-left: 1vh;
+}
+
+#name p {
+  color: white;
+  padding-top: 0px;
+  margin-top: -5px;
+  margin-bottom: 0px;
+  padding-bottom: 0px;
+}
+
+#name h2 {
+  color: #b67600;
+  padding-top: 0px;
+  margin-top: 1vh;
+  padding-bottom: 0px;
+  margin-bottom: 0px;
+}
+
+#img {
+  -ms-grid-row: 1;
+      grid-row-start: 1;
+  -ms-grid-column: 5;
+      grid-column-start: 5;
+  grid-row-end: 4;
+  grid-column-end: 7;
+  background-color: white;
+  border-radius: 0px 10px 10px 0px;
+  /*center content*/
+}
+
+#img img {
+  max-width: 100px;
+  max-height: 200px;
+  margin: auto;
+  display: block;
+}
+
+#info {
+  -ms-grid-row: 2;
+      grid-row-start: 2;
+  -ms-grid-column: 1;
+      grid-column-start: 1;
+  grid-row-end: 4;
+  grid-column-end: 5;
+  background-color: #c8c8c8;
+  border-radius: 0px 0px 0px 10px;
+  padding-left: 1vh;
+  padding-right: 1vh;
+  margin-top: -1vh;
+}
+/*# sourceMappingURL=BeerCard.css.map */
