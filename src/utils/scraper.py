@@ -27,7 +27,7 @@ catalogHeaders = {"Host": "www.systembolaget.se",
 "Cache-Control":"no-cache"}
 
 
-catalog = requests.get("https://www.systembolaget.se/sitemap-produkter-ol.xml", headers=catalogHeaders)
+catalog = requests.get("https://www.systembolaget.se/sitemap-produkter-vin.xml", headers=catalogHeaders)
 #extract the product links from the xml
 catalogLinks = re.findall(r'<loc>(.*?)</loc>', catalog.text)
 #print link 50
@@ -35,23 +35,26 @@ print(catalogLinks[0])
 #keep only first 100 values of the list
 #catalogLinks = catalogLinks[:100]
 first = True
+linksHandled = 0
 #write all column names to the csv file
 #loop through all the links and extract the product id, save it to a csv file
 for link in catalogLinks:
     productId = re.findall(r'-(\d+)', link)
     productHeaders['Referer'] = link
     product = requests.get("https://www.systembolaget.se/api/gateway/product/productnumber/" + productId[0] + "/", headers=productHeaders)
-    if(product.status_code == 404):
+    linksHandled += 1
+    print("Percentage done: " + str(linksHandled/len(catalogLinks)*100) + "%")
+    if(product.status_code != 200):
         continue
     if(first):
         first = False
-        with open('products.csv', 'w', newline='') as csvfile:
+        with open('wine.csv', 'w', newline='') as csvfile:
             writer = csv.DictWriter(csvfile, fieldnames=product.json().keys())
             print(product.json().keys())
             writer.writeheader()
     #write the product to the csv file if taste, aroma, categoryLevel1, categoryLevel2, categoryLevel3, categoryLevel4, usage are not null
     if(product.json()['taste'] != None and product.json()['aroma'] != None and product.json()['categoryLevel1'] != None and product.json()['categoryLevel2'] != None and product.json()['categoryLevel3'] != None and product.json()['usage'] != None and product.json()['productNameBold'] != None and product.json()['productNameThin'] != None):
-        with open('products.csv', 'a', newline='') as csvfile:
+        with open('wine.csv', 'a', newline='') as csvfile:
             writer = csv.DictWriter(csvfile, fieldnames=product.json().keys())
             writer.writerow(product.json())
 

@@ -6,8 +6,10 @@ import { useEffect, useState } from 'react'
 import * as d3 from 'd3'
 import Input from './components/Input'
 import BeerCard from './components/BeerCard'
-import data from './utils/products.csv'
+import wineData from './utils/wine.csv'
+//import beerData from './utils/products.csv'
 
+const data = wineData
 // console.log(data)
 
 let allBeers = []
