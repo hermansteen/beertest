@@ -7,9 +7,10 @@ import * as d3 from 'd3'
 import Input from './components/Input'
 import BeerCard from './components/BeerCard'
 import wineData from './utils/wine.csv'
-//import beerData from './utils/products.csv'
+import Slider from './components/Slider.js';
+import beerData from './utils/products.csv'
 
-const data = wineData
+const data = beerData
 // console.log(data)
 
 let allBeers = []
@@ -90,22 +91,45 @@ const App = () => {
     search(text)
   }
 
+  //Vissa öl har inget namn på thin, ändrar då titeln till att endast visa namnet på bold
   const findSimilar = (beer) => {
-    setSubtitle('Similar to ' + beer.productNameBold)
+    if(data === wineData) {
+      if(beer.productNameBold === "") {
+        setSubtitle('Vin som liknar ' + beer.productNameThin);
+      } else {
+      setSubtitle('Vin som liknar ' + beer.productNameBold);
+      }
+    }
+    else { 
+      if(beer.productNameThin === "") {
+        setSubtitle('Öl som liknar ' + beer.productNameBold);
+      } else {
+      setSubtitle('Öl som liknar ' + beer.productNameThin);
+      }
+    }
     search(beerToString(beer))
   }
+
   return (
     <div className='App'>
       <div className='header'>
-        <h1>Beer search</h1>
-        <Input onChange={handleInput} />
-        <h2>{subTitle}</h2>
+            <div id="switch">
+              <Slider onClick={handleInput} />
+            </div>
+            <div id="temp"></div>
+            <div id="searchDiv"><Input onChange={handleInput} /></div>           
+            <div id="similar"><p>{subTitle}</p></div>
       </div>
       <div className='cardDisplay'>
-        {loading && <p>Loading...</p>}
+        {loading && <div className = "loadingScreen"><h1>Laddar in databas!</h1></div>}
+
+        {!loading && results.length === 0 && <h2>TODO: Fixa instruktioner</h2> }
+             
         {!loading && results.map(result => {
+          
           return (
             <BeerCard beerData={result} key={result.beer.id} onClick={findSimilar} />
+            
           )
         })}
       </div>
