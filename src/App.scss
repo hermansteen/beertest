@@ -32,18 +32,14 @@ input[type=text] {
   font-size: 3vh;
   text-align: center;
   border-radius: 20px;
-  border: 1px solid rgb(0, 0, 0);
-  margin: 0px;    
+  border: 1px solid rgb(0, 0, 0); 
 }
 
 .cardDisplay {
   display: grid;
   grid-row-start: 2;  
-
   grid-template-rows: repat(auto, 1fr);
-  grid-gap: 1vh;
-
-     
+  grid-gap: 1vh;     
   margin: 1vh;
   margin-bottom: 1vh; 
 }
@@ -72,11 +68,9 @@ input[type=text] {
   justify-content: center;
   align-items: center;
   text-align: center;
- 
 }
 
-#switch p, #similar p {
-  
+#switch p, #similar p { 
   color: $baseOrangeColor;
   font-size: 1.5em;
   height: 10vh;
@@ -88,7 +82,6 @@ input[type=text] {
   text-align: center;
 }
 
-
 .loadingScreen {
   border-radius: 20px;
   grid-column-start: 2;
@@ -96,11 +89,12 @@ input[type=text] {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin:25%;
+  margin: 5% 25% 25%;
   height: 50%;
   width: 50%;
+  padding-top: -5vh;
   background-color: $baseBackgroundColor;
-  position: fixed;
+  position: absolute;
   z-index: 2;
   color: $baseOrangeColor;
   font-family: $fontCommon;
@@ -125,24 +119,6 @@ input[type=text] {
   padding-right: 1vh;
 }
 
-button {
-  background-color: $baseOrangeColor;
-  color: black;
-  font-family: $fontCommon;
-  font-size: 1.5em;
-  height: 5vh;
-  width: 10vh;
-  border-radius: 10%;
- // border: 1px solid rgb(0, 0, 0);
-  margin: 0px;
-  padding: 0px;
-}
-button:hover {
-  background-color: $baseBackgroundColor;
-  color: $baseOrangeColor;
-  border: 1px solid $baseOrangeColor;
-}
-
 #similar {
   grid-column-start: 5;
   grid-column-end: 7;
@@ -153,18 +129,13 @@ button:hover {
   align-items: center;
   text-align: center;
 }
-//TODO: Fixa så att instruktionerna är centrerade och snygga!
-.instructions {
-    display: grid;
-    grid-template-columns: 50%;
-    grid-template-rows: 1fr;
+
+#instructions {
     justify-content: center;
-    align-items: center;
     text-align: center;
-    margin:25%;
+    margin: 5% 25% 25%;
     height: 50%;
     width: 50%;
-
     position: fixed;
     z-index: 2;
     color: white;
@@ -184,7 +155,7 @@ button:hover {
   height: 0;
 }
 
-.slider {
+.sliderRound {
   position: absolute;
   cursor: pointer;
   top: 0;
@@ -196,7 +167,7 @@ button:hover {
   transition: .4s;
 }
 
-.slider:before {
+.sliderRound:before {
   position: absolute;
   content: "";
   height: 26px;
@@ -208,11 +179,11 @@ button:hover {
   transition: .4s;
 }
 
-input:checked + .slider {
+input:checked + .sliderRound {
   background-color: $baseRedColor;
 }
 
-input:checked + .slider:before {
+input:checked + .sliderRound:before {
   -webkit-transform: translateX(26px);
   -ms-transform: translateX(26px);
   transform: translateX(26px);

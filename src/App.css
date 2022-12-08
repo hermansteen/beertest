@@ -21,7 +21,6 @@ input[type=text] {
   text-align: center;
   border-radius: 20px;
   border: 1px solid rgb(0, 0, 0);
-  margin: 0px;
 }
 
 .cardDisplay {
@@ -78,11 +77,12 @@ input[type=text] {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 25%;
+  margin: 5% 25% 25%;
   height: 50%;
   width: 50%;
+  padding-top: -5vh;
   background-color: rgb(35, 35, 35);
-  position: fixed;
+  position: absolute;
   z-index: 2;
   color: rgb(182, 118, 0);
   font-family: "Bebas Neue", cursive;
@@ -107,24 +107,6 @@ input[type=text] {
   padding-right: 1vh;
 }
 
-button {
-  background-color: rgb(182, 118, 0);
-  color: black;
-  font-family: "Bebas Neue", cursive;
-  font-size: 1.5em;
-  height: 5vh;
-  width: 10vh;
-  border-radius: 10%;
-  margin: 0px;
-  padding: 0px;
-}
-
-button:hover {
-  background-color: rgb(35, 35, 35);
-  color: rgb(182, 118, 0);
-  border: 1px solid rgb(182, 118, 0);
-}
-
 #similar {
   grid-column-start: 5;
   grid-column-end: 7;
@@ -136,14 +118,10 @@ button:hover {
   text-align: center;
 }
 
-.instructions {
-  display: grid;
-  grid-template-columns: 50%;
-  grid-template-rows: 1fr;
+#instructions {
   justify-content: center;
-  align-items: center;
   text-align: center;
-  margin: 25%;
+  margin: 5% 25% 25%;
   height: 50%;
   width: 50%;
   position: fixed;
@@ -165,7 +143,7 @@ button:hover {
   height: 0;
 }
 
-.slider {
+.sliderRound {
   position: absolute;
   cursor: pointer;
   top: 0;
@@ -177,7 +155,7 @@ button:hover {
   transition: 0.4s;
 }
 
-.slider:before {
+.sliderRound:before {
   position: absolute;
   content: "";
   height: 26px;
@@ -189,11 +167,11 @@ button:hover {
   transition: 0.4s;
 }
 
-input:checked + .slider {
+input:checked + .sliderRound {
   background-color: rgb(117, 0, 0);
 }
 
-input:checked + .slider:before {
+input:checked + .sliderRound:before {
   -webkit-transform: translateX(26px);
   -ms-transform: translateX(26px);
   transform: translateX(26px);

@@ -9,11 +9,33 @@ import BeerCard from './components/BeerCard'
 import wineData from './utils/wine.csv'
 import Slider from './components/Slider.js';
 import beerData from './utils/products.csv'
+import Instructions from './components/Instructions'
 
-const data = beerData
-// console.log(data)
+const beerDB = beerData;
+const wineDB = wineData;
+
+//Temp bool
+let bBeer = true;
+// console.log(data) 
+let dataSet = "";
+let placeholderText = ""; 
+
+if(bBeer) {
+  dataSet = "beer";
+  placeholderText = "Sök på en öl du gillar";
+  bBeer = !bBeer;
+  console.log("Changed to beer");
+} else {
+  dataSet = "wine";
+  placeholderText = "Sök på ett vin du gillar";
+  bBeer = !bBeer;
+  console.log("Changed to wine");
+}
+
 
 let allBeers = []
+let allWines = []
+
 const beerToString = beer => {
   const properties = [
     beer.productNameBold,
@@ -31,7 +53,7 @@ const beerToString = beer => {
 }
 // read data from db.json and add id to each beer
 const loadBeers = async () => {
-  await d3.csv(data, (d) => {
+  await d3.csv(beerDB, (d) => {
     allBeers.push(d)
   })
   allBeers = removeDuplicates(allBeers)
@@ -42,6 +64,19 @@ const loadBeers = async () => {
   // console.log(beerToString(allBeers[0]))
   return allBeers.map(beer => beerToString(beer))
 }
+
+const loadWines = async () => {
+  await d3.csv(wineDB, (d) => {
+    allWines.push(d)
+  })
+  allWines = removeDuplicates(allWines)
+  allWines = allWines.map(wine => {
+    return { ...wine, id: uuidv4() }
+  })
+  return allWines.map(wine => beerToString(wine))
+}
+     
+
 const removeDuplicates = beers => {
   const textBeers = beers.map((beer) => JSON.stringify(beer))
   const uniq = new Set(textBeers)
@@ -56,9 +91,9 @@ const App = () => {
 
   const createCorpus = async () => {
     const beers = await loadBeers()
-    console.log(beers)
+    //console.log(beers)
     const documentTitles = beers.map((beer, i) => i.toString())
-    console.log(documentTitles)
+    //console.log(documentTitles)
     const corpus = new Corpus(
       documentTitles,
       beers,
@@ -74,13 +109,13 @@ const App = () => {
   }, [])
 
   const search = (text) => {
-    console.log(text)
+    //console.log(text)
     if (corpus != null) {
       const result = corpus.getResultsForQuery(text).slice(0, 50)
       setResults(result.map(item => {
         return {
           beer: allBeers[Number(item[0])],
-          similarity: Number(item[1])
+          similarity: Number(item[1])          
         }
       }))
     }
@@ -93,7 +128,7 @@ const App = () => {
 
   //Vissa öl har inget namn på thin, ändrar då titeln till att endast visa namnet på bold
   const findSimilar = (beer) => {
-    if(data === wineData) {
+    if(dataSet === "wine") {
       if(beer.productNameBold === "") {
         setSubtitle('Vin som liknar ' + beer.productNameThin);
       } else {
@@ -110,26 +145,29 @@ const App = () => {
     search(beerToString(beer))
   }
 
+
+
   return (
     <div className='App'>
       <div className='header'>
             <div id="switch">
-              <Slider onClick={handleInput} />
+              <Slider db={dataSet}/>             
             </div>
             <div id="temp"></div>
-            <div id="searchDiv"><Input onChange={handleInput} /></div>           
+            <div id="searchDiv"><Input onChange={handleInput} text={placeholderText}/></div>           
             <div id="similar"><p>{subTitle}</p></div>
       </div>
-      <div className='cardDisplay'>
-        {loading && <div className = "loadingScreen"><h1>Laddar in databas!</h1></div>}
 
-        {!loading && results.length === 0 && <h2>TODO: Fixa instruktioner</h2> }
-             
+      <div className='cardDisplay'>
+        {loading && <div className="loadingScreen"><h1>Laddar in databas!</h1></div>}
+
+        {!loading && results.length === 0 && 
+          <Instructions db={dataSet}/>
+        }             
         {!loading && results.map(result => {
           
           return (
-            <BeerCard beerData={result} key={result.beer.id} onClick={findSimilar} />
-            
+            <BeerCard beerData={result} key={result.beer.id} onClick={findSimilar} />            
           )
         })}
       </div>

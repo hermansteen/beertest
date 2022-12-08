@@ -25,12 +25,13 @@ function BeerCard({ beerData, onClick }) {
             }
         })}
 
-    
+    console.log(beerInfo.similarity)
     return(        
             <div className="beerCard" onClick={() => onClick(beerInfo)}>
                 <div id="name">
                     <h2>{beerInfo.productNameBold + " " + beerInfo.productNameThin}</h2>                   
-                    <p>{beerInfo.producerName}</p>          
+                    <p>{beerInfo.producerName}</p>
+                           
                 </div>
 
                 <div id="img">
@@ -41,13 +42,12 @@ function BeerCard({ beerData, onClick }) {
                         <p>Volym: {beerInfo.volume + " ml"}<br/>                       
                         Pris på SB: {beerInfo.priceInclVat} kr</p>                       
                 </div> 
-                {/*WIP: Förstör layouten för tillfället men kollen fungerar. Kollen finns även i #style om man hellre vill göra något där?*/}
+
                 <div className="info">
                     {beerInfo.isGlutenFree === "True" && <div id="tasteWGluten">
-                        <p>{beerInfo.taste}<br/>
-                        Fri från gluten</p>
+                        <p>{beerInfo.taste}<br/></p>
+                
                     </div>}
-
                     {beerInfo.isGlutenFree === "False" && <div id="tasteNoGluten">
                         <p>{beerInfo.taste}</p>
                         </div>}
@@ -56,7 +56,8 @@ function BeerCard({ beerData, onClick }) {
                         {beerInfo.isGlutenFree === "True" && 
                         
                             <p>{beerInfo.categoryLevel2 + " - " + beerInfo.categoryLevel3}<br/>
-                            Alk: {beerInfo.alcoholPercentage + "% "}</p>
+                            Alk: {beerInfo.alcoholPercentage + "% "}
+                            </p>
                             } 
 
                         {beerInfo.isGlutenFree === "False" &&                            
