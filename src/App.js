@@ -145,7 +145,7 @@ const App = () => {
     search(beerToString(beer))
   }
 
-
+  
 
   return (
     <div className='App'>

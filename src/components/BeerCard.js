@@ -2,8 +2,9 @@ import './BeerCard.css';
 import imageExists from 'image-exists';
 
 function BeerCard({ beerData, onClick }) {
-
+    
     const beerInfo = beerData.beer;
+    const beerSimilarity = beerData.similarity;
     let imageURL = 'https://product-cdn.systembolaget.se/productimages/' + beerInfo.productId + '/' + beerInfo.productId + '_400.png';
 
     //Kollar om produktnamnet är tomt, samma som undernament eller samma som bryggeriet för att städa upp namnen lite
@@ -25,7 +26,6 @@ function BeerCard({ beerData, onClick }) {
             }
         })}
 
-    console.log(beerInfo.similarity)
     return(        
             <div className="beerCard" onClick={() => onClick(beerInfo)}>
                 <div id="name">
@@ -40,7 +40,10 @@ function BeerCard({ beerData, onClick }) {
 
                 <div id="volume">
                         <p>Volym: {beerInfo.volume + " ml"}<br/>                       
-                        Pris på SB: {beerInfo.priceInclVat} kr</p>                       
+                        Pris på SB: {beerInfo.priceInclVat} kr<br/> 
+                        {beerSimilarity > 29 && 
+                        <p>Bra matchning!</p>}</p> 
+
                 </div> 
 
                 <div className="info">
