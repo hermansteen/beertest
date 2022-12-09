@@ -1,17 +1,17 @@
 {
   "files": {
-    "main.css": "/beertest/static/css/main.c545e248.css",
-    "main.js": "/beertest/static/js/main.05ec2c7a.js",
-    "static/js/787.9abd95c0.chunk.js": "/beertest/static/js/787.9abd95c0.chunk.js",
-    "static/media/products.csv": "/beertest/static/media/products.fa9317fc01e61a38dbeb.csv",
-    "static/media/wine.csv": "/beertest/static/media/wine.6ae04f745d3566987c57.csv",
-    "index.html": "/beertest/index.html",
-    "main.c545e248.css.map": "/beertest/static/css/main.c545e248.css.map",
-    "main.05ec2c7a.js.map": "/beertest/static/js/main.05ec2c7a.js.map",
-    "787.9abd95c0.chunk.js.map": "/beertest/static/js/787.9abd95c0.chunk.js.map"
+    "main.css": "/beerTestV1/static/css/main.c545e248.css",
+    "main.js": "/beerTestV1/static/js/main.6442efb5.js",
+    "static/js/787.9abd95c0.chunk.js": "/beerTestV1/static/js/787.9abd95c0.chunk.js",
+    "static/media/products.csv": "/beerTestV1/static/media/products.fa9317fc01e61a38dbeb.csv",
+    "static/media/wine.csv": "/beerTestV1/static/media/wine.6ae04f745d3566987c57.csv",
+    "index.html": "/beerTestV1/index.html",
+    "main.c545e248.css.map": "/beerTestV1/static/css/main.c545e248.css.map",
+    "main.6442efb5.js.map": "/beerTestV1/static/js/main.6442efb5.js.map",
+    "787.9abd95c0.chunk.js.map": "/beerTestV1/static/js/787.9abd95c0.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.c545e248.css",
-    "static/js/main.05ec2c7a.js"
+    "static/js/main.6442efb5.js"
   ]
 }
