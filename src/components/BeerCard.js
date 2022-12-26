@@ -42,11 +42,23 @@ function BeerCard({ beerData, beerLink, onClick }) {
                 {waitForImg() && <img src={imageURL} alt="Bild på produkten" />}
             </div>
 
+<<<<<<< Updated upstream
             <div id="volume">
                 <p>Volym: {beerInfo.volume + " ml"}<br />
                     Pris på SB: {beerInfo.priceInclVat} kr<br />
                     {beerSimilarity > 29 &&
                         <p>Bra matchning!</p>}</p>
+=======
+                <div id="volume">
+                        <p>Volym: {beerInfo.volume + " ml"}<br/>                       
+                        Pris på SB: {beerInfo.priceInclVat} kr<br/> 
+                        {beerSimilarity > 29 && 
+                        <p>Bra matchning!</p>}
+                        {beerSimilarity <= 29 && beerSimilarity > 20 &&
+                        <p>Ok matchning!</p>}
+                        </p>
+                         
+>>>>>>> Stashed changes
 
             </div>
 
