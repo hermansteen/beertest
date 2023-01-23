@@ -1,57 +1,53 @@
-a {
-  text-decoration: none;
-  color: black;
-}
-
 h2, p {
   font-family: "Bebas Neue", cursive;
 }
 
-h2 {
-  font-size: 25px;
-}
-
 p {
-  font-size: 18px;
+  font-size: 2vh;
 }
 
-.beer-card {
-  display: -ms-grid;
+h2 {
+  font-size: 2.5vh;
+}
+
+.beerCard {
   display: grid;
-  -ms-grid-rows: (1fr)[3];
-      grid-template-rows: repeat(3, 1fr);
-  -ms-grid-columns: (1fr)[6];
-      grid-template-columns: repeat(6, 1fr);
-  height: 100%;
+  grid-template-rows: repeat(3, 1fr);
+  grid-template-columns: repeat(6, 1fr);
+  height: 25vh;
   width: 100%;
-  border: 2px solid #232323;
+  border: 2px solid rgb(35, 35, 35);
   border-radius: 10px;
-  background-color: #232323;
+  background-color: rgb(35, 35, 35);
 }
 
-.beer-card:hover {
-  border: 2px solid #b67600;
-  background-color: #b67600;
+.beerCard:hover {
+  border: 2px solid rgb(182, 118, 0);
+  background-color: rgb(182, 118, 0);
+  cursor: pointer;
 }
-
-.beer-card:hover #name h2 {
+.beerCard:hover #name h2 {
   color: white;
+}
+.beerCard:hover #volume {
+  visibility: visible;
 }
 
 #name {
-  -ms-grid-row: 1;
-      grid-row-start: 1;
-  -ms-grid-column: 1;
-      grid-column-start: 1;
+  grid-row-start: 1;
+  grid-column-start: 1;
   grid-row-end: 2;
   grid-column-end: 5;
   border-radius: 10px 0px 0px 0px;
   width: 100%;
+  height: 8vh;
   padding: 0px;
-  background: #232323;
-  background: linear-gradient(138deg, #232323 40%, #4a4a4a 60%, #7a7a7a 100%);
+  background: rgb(35, 35, 35);
+  background: -moz-linear-gradient(138deg, rgb(35, 35, 35) 40%, rgb(74, 74, 74) 60%, rgb(122, 122, 122) 100%);
+  background: -webkit-linear-gradient(138deg, rgb(35, 35, 35) 40%, rgb(74, 74, 74) 60%, rgb(122, 122, 122) 100%);
+  background: linear-gradient(138deg, rgb(35, 35, 35) 40%, rgb(74, 74, 74) 60%, rgb(122, 122, 122) 100%);
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#373737",endColorstr="#7a7a7a",GradientType=1);
-  color: #b67600;
+  color: rgb(182, 118, 0);
   padding-left: 1vh;
 }
 
@@ -64,7 +60,7 @@ p {
 }
 
 #name h2 {
-  color: #b67600;
+  color: rgb(182, 118, 0);
   padding-top: 0px;
   margin-top: 1vh;
   padding-bottom: 0px;
@@ -72,35 +68,109 @@ p {
 }
 
 #img {
-  -ms-grid-row: 1;
-      grid-row-start: 1;
-  -ms-grid-column: 5;
-      grid-column-start: 5;
+  grid-row-start: 1;
+  grid-column-start: 5;
   grid-row-end: 4;
   grid-column-end: 7;
   background-color: white;
   border-radius: 0px 10px 10px 0px;
-  /*center content*/
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 #img img {
-  max-width: 100px;
-  max-height: 200px;
   margin: auto;
   display: block;
 }
 
-#info {
-  -ms-grid-row: 2;
-      grid-row-start: 2;
-  -ms-grid-column: 1;
-      grid-column-start: 1;
+@media only screen and (max-width: 1020px) {
+  #img img {
+    max-width: 80px;
+    max-height: 170px;
+  }
+  h2 {
+    font-size: 2vh;
+  }
+  #tasteNoGluten, #tasteWGluten {
+    height: 9vh;
+  }
+}
+@media only screen and (min-width: 1020px) {
+  #img img {
+    max-width: 100px;
+    max-height: 200px;
+  }
+}
+.info {
+  display: grid;
+  grid-template-rows: 3;
+  grid-row-start: 2;
+  grid-column-start: 1;
   grid-row-end: 4;
   grid-column-end: 5;
-  background-color: #c8c8c8;
+  background-color: rgb(200, 200, 200);
   border-radius: 0px 0px 0px 10px;
   padding-left: 1vh;
   padding-right: 1vh;
   margin-top: -1vh;
 }
+
+#tasteNoGluten p, #tasteWGluten p {
+  grid-row-start: 1;
+  padding-top: -1vh;
+  margin-top: -1vh;
+  width: 100%;
+  height: 11vh;
+  margin-top: -0.1vh;
+}
+
+#tasteWGluten img {
+  width: 2vh;
+}
+
+#imageGlutenFree {
+  grid-row-start: 2;
+  grid-row-end: 4;
+  grid-column-start: 1;
+  grid-column-end: 5;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 0.5vh;
+  padding-bottom: 0.5vh;
+}
+
+#imageGlutenFree img {
+  width: 2vh;
+}
+
+#style {
+  grid-row-start: 3;
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  font-family: "Bebas Neue", cursive;
+  height: 5vh;
+}
+
+#style img {
+  width: 2vh;
+}
+
+#volume {
+  visibility: hidden;
+  grid-row-start: 1;
+  grid-row-end: 4;
+  grid-column-start: 5;
+  grid-column-end: 7;
+  background-color: rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: center;
+  border-radius: 0px 10px 10px 0px;
+  align-items: center;
+  color: white;
+  font-size: 1.5em;
+}
+
 /*# sourceMappingURL=BeerCard.css.map */

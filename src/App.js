@@ -6,13 +6,24 @@ import { useEffect, useState } from 'react'
 import * as d3 from 'd3'
 import Input from './components/Input'
 import BeerCard from './components/BeerCard'
-import wineData from './utils/wine.csv'
-//import beerData from './utils/products.csv'
+//import wineData from './utils/wine.csv'
+import productLinks from './utils/links.csv'
+import Slider from './components/Slider.js';
+import productData from './utils/products.csv'
+import Instructions from './components/Instructions'
 
-const data = wineData
-// console.log(data)
+const productDB = productData;
+//const wineDB = wineData;
+
+//Temp bool
+let bBeer = true;
+// console.log(data) 
+
 
 let allBeers = []
+let allWines = []
+let allProducts = []
+
 const beerToString = beer => {
   const properties = [
     beer.productNameBold,
@@ -28,19 +39,25 @@ const beerToString = beer => {
   // console.log(properties.join(' '))
   return properties.join(' ')
 }
-// read data from db.json and add id to each beer
-const loadBeers = async () => {
-  await d3.csv(data, (d) => {
-    allBeers.push(d)
+
+const loadProducts = async () => {
+  await d3.csv(productDB, (d) => {
+    allProducts.push(d)
   })
-  allBeers = removeDuplicates(allBeers)
-  allBeers = allBeers.map(beer => {
-    return { ...beer, id: uuidv4() }
+  allProducts = removeDuplicates(allProducts)
+  allProducts = allProducts.map(product => {
+    return { ...product, id: uuidv4()}
   })
-  // console.log(allBeers[0])
-  // console.log(beerToString(allBeers[0]))
-  return allBeers.map(beer => beerToString(beer))
+  //add link to product
+  allProducts = allProducts.map(product => {
+    return { ...product, link: productLinks[product.productId]}
+  })
+  console.log(allProducts[0].link)
+
+  return allProducts.map(product => beerToString(product))
 }
+
+
 const removeDuplicates = beers => {
   const textBeers = beers.map((beer) => JSON.stringify(beer))
   const uniq = new Set(textBeers)
@@ -54,13 +71,13 @@ const App = () => {
   const [subTitle, setSubtitle] = useState('')
 
   const createCorpus = async () => {
-    const beers = await loadBeers()
-    console.log(beers)
-    const documentTitles = beers.map((beer, i) => i.toString())
-    console.log(documentTitles)
+    const products = await loadProducts()
+    //console.log(beers)
+    const documentTitles = products.map((beer, i) => i.toString())
+    //console.log(documentTitles)
     const corpus = new Corpus(
       documentTitles,
-      beers,
+      products,
       false,
       stopwords
     )
@@ -73,12 +90,12 @@ const App = () => {
   }, [])
 
   const search = (text) => {
-    console.log(text)
+    //console.log(text)
     if (corpus != null) {
       const result = corpus.getResultsForQuery(text).slice(0, 50)
       setResults(result.map(item => {
         return {
-          beer: allBeers[Number(item[0])],
+          beer: allProducts[Number(item[0])],
           similarity: Number(item[1])
         }
       }))
@@ -90,22 +107,35 @@ const App = () => {
     search(text)
   }
 
-  const findSimilar = (beer) => {
-    setSubtitle('Similar to ' + beer.productNameBold)
-    search(beerToString(beer))
+  //Vissa öl har inget namn på thin, ändrar då titeln till att endast visa namnet på bold
+  const findSimilar = (item) => {
+    if (item.productNameBold === "") {
+      setSubtitle('Vin som liknar ' + item.productNameThin);
+    } else {
+      setSubtitle('Produkter som liknar ' + item.productNameBold);
+    }
+    search(beerToString(item))
   }
+
+
   return (
     <div className='App'>
       <div className='header'>
-        <h1>Beer search</h1>
-        <Input onChange={handleInput} />
-        <h2>{subTitle}</h2>
+        <div id="temp"></div>
+        <div id="searchDiv"><Input onChange={handleInput} text="Sök på en öl/ett vin du gillar" /></div>
+        <div id="similar"><p>{subTitle}</p></div>
       </div>
+
       <div className='cardDisplay'>
-        {loading && <p>Loading...</p>}
+        {loading && <div className="loadingScreen"><h1>Laddar in databas!</h1></div>}
+
+        {!loading && results.length === 0 &&
+          <Instructions db="" />
+        }
         {!loading && results.map(result => {
+
           return (
-            <BeerCard beerData={result} key={result.beer.id} onClick={findSimilar} />
+            <BeerCard beerData={result} beerLink={productLinks[result.productId]} key={result.beer.id} onClick={findSimilar} />
           )
         })}
       </div>
