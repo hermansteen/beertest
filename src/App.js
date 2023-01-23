@@ -9,7 +9,7 @@ import BeerCard from './components/BeerCard'
 //import wineData from './utils/wine.csv'
 import productLinks from './utils/links.csv'
 import Slider from './components/Slider.js';
-import productData from './utils/testing.csv'
+import productData from './utils/products.csv'
 import Instructions from './components/Instructions'
 
 const productDB = productData;
@@ -116,7 +116,6 @@ const App = () => {
     }
     search(beerToString(item))
   }
-
 
 
   return (
