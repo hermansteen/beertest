@@ -6,13 +6,13 @@ import { useEffect, useState } from 'react'
 import * as d3 from 'd3'
 import Input from './components/Input'
 import BeerCard from './components/BeerCard'
-import wineData from './utils/wine.csv'
+//import wineData from './utils/wine.csv'
 import productLinks from './utils/links.csv'
 import beerData from './utils/products.csv'
 import Instructions from './components/Instructions'
 
-const beerDB = beerData;
-const wineDB = wineData;
+const productDB = productData;
+//const wineDB = wineData;
 
 
 
@@ -35,10 +35,7 @@ const beerToString = beer => {
 }
 
 const loadProducts = async () => {
-  await d3.csv(beerDB, (d) => {
-    allProducts.push(d)
-  })
-  await d3.csv(wineDB, (d) => {
+  await d3.csv(productDB, (d) => {
     allProducts.push(d)
   })
   allProducts = removeDuplicates(allProducts)
