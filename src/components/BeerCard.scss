@@ -1,5 +1,8 @@
 $fontCommon: 'Bebas Neue', cursive;
-$baseOrangeColor: rgb(182, 118, 0);
+$baseBeerColor: rgb(182, 118, 0);
+$baseRedWineColor: rgb(144, 1, 1);
+$baseWhiteWineColor: rgb(141, 236, 165);
+$baseRoseWineColor: rgb(221, 116, 116);
 $baseBackgroundColor: rgb(35,35,35);
 $mobile: 800px;
 $tablet: 1020px;
@@ -31,9 +34,62 @@ h2 {
     background-color: $baseBackgroundColor;
 }
 
+.redCard {
+    display: grid; 
+  
+    grid-template-rows: repeat(3, 1fr);
+    grid-template-columns: repeat(6, 1fr);
+    
+    height: 25vh;
+    width: 100%; 
+    border: 2px solid $baseBackgroundColor;
+    border-radius: 10px; 
+    background-color: $baseBackgroundColor;
+}
+
+.whiteCard {
+    display: grid; 
+  
+    grid-template-rows: repeat(3, 1fr);
+    grid-template-columns: repeat(6, 1fr);
+    
+    height: 25vh;
+    width: 100%; 
+    border: 2px solid $baseBackgroundColor;
+    border-radius: 10px; 
+    background-color: $baseBackgroundColor;
+}
+
+.roseCard {
+    display: grid; 
+  
+    grid-template-rows: repeat(3, 1fr);
+    grid-template-columns: repeat(6, 1fr);
+    
+    height: 25vh;
+    width: 100%; 
+    border: 2px solid $baseBackgroundColor;
+    border-radius: 10px; 
+    background-color: $baseBackgroundColor;
+
+}
+
+.defaultCard {
+    display: grid; 
+  
+    grid-template-rows: repeat(3, 1fr);
+    grid-template-columns: repeat(6, 1fr);
+    
+    height: 25vh;
+    width: 100%; 
+    border: 2px solid $baseBackgroundColor;
+    border-radius: 10px; 
+    background-color: $baseBackgroundColor;
+}
+
 .beerCard:hover {
-    border: 2px solid $baseOrangeColor;
-    background-color: $baseOrangeColor;
+    border: 2px solid $baseBeerColor;
+    background-color: $baseBeerColor;
     cursor: pointer;
 
     #name h2 {
@@ -43,6 +99,108 @@ h2 {
     #volume {
         visibility: visible;
     }
+}
+
+.roseCard:hover{
+    border: 2px solid $baseRoseWineColor;
+    background-color: $baseRoseWineColor;
+    cursor: pointer;
+
+    #name h2 {
+        color: white;
+    }
+
+    #volume {
+        visibility: visible;
+    }
+}
+
+.defaultCard:hover {
+    border: 2px solid white;
+    background-color: white;
+    cursor: pointer;
+
+    #name h2 {
+        color: white;
+    }
+
+    #volume {
+        visibility: visible;
+    }
+}
+
+.redCard:hover {
+    border: 2px solid $baseRedWineColor;
+    background-color: $baseRedWineColor;
+    cursor: pointer;
+
+    #name h2 {
+        color: white;
+    }
+
+    #volume {
+        visibility: visible;
+    }
+
+}
+
+.whiteCard:hover {
+    border: 2px solid $baseWhiteWineColor;
+    background-color: $baseWhiteWineColor;
+    cursor: pointer;
+
+    #name h2 {
+        color: white;
+    }
+
+    #volume {
+        visibility: visible;
+    }   
+}
+
+.defaultCard {
+    #name {
+        color: white;
+    }
+    #name h2 {
+        color: white ;
+    }  
+}
+.redCard {
+    #name {
+        color: $baseRedWineColor;
+    }
+    #name h2 {
+        color: $baseRedWineColor;
+    }
+}
+
+.roseCard {
+    #name {
+        color: $baseRoseWineColor;
+    }
+    #name h2 {
+        color: $baseRoseWineColor;
+    } 
+}
+.whiteCard {
+    
+    #name {
+        color: $baseWhiteWineColor;
+    }
+    #name h2 {
+        color: $baseWhiteWineColor;
+    }
+}
+.beerCard {
+
+    #name {
+        color: $baseBeerColor;
+    }
+    #name h2 {
+        color: $baseBeerColor;
+    }
+    
 }
 
 #name {
@@ -61,8 +219,7 @@ h2 {
     background: -webkit-linear-gradient(138deg, rgba(35,35,35,1) 40%, rgba(74,74,74,1) 60%, rgba(122,122,122,1) 100%);
     background: linear-gradient(138deg, rgba(35,35,35,1) 40%, rgba(74,74,74,1) 60%, rgba(122,122,122,1) 100%);
     filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#373737",endColorstr="#7a7a7a",GradientType=1);
-    
-    color: $baseOrangeColor;
+       
     padding-left: 1vh;
 
 }
@@ -76,7 +233,6 @@ h2 {
 }
 
 #name h2 {
-    color: $baseOrangeColor;
     padding-top:0px;
     margin-top: 1vh;
     padding-bottom: 0px;
@@ -102,8 +258,8 @@ h2 {
 
 @media only screen and (max-width: $tablet) {
     #img img {
-        max-width: 80px;
-        max-height: 170px; 
+        max-width: 60px;
+        max-height: 150px; 
     } 
     
     h2 {
@@ -117,8 +273,8 @@ h2 {
 
 @media only screen and (min-width: $tablet) {
     #img img {
-        max-width: 100px;
-        max-height: 200px;
+        max-width: 90px;
+        max-height: 190px;
     }
 }
 

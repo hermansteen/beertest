@@ -7,7 +7,8 @@ function BeerCard({ beerData, beerLink, onClick }) {
     const beerInfo = beerData.beer;
     const beerSimilarity = beerData.similarity;
     const link = beerData.link;
-    console.log(link)
+    let cardType = "";
+    //console.log(link)
     let imageURL = 'https://product-cdn.systembolaget.se/productimages/' + beerInfo.productId + '/' + beerInfo.productId + '_400.png';
 
     //Kollar om produktnamnet är tomt, samma som undernament eller samma som bryggeriet för att städa upp namnen lite
@@ -29,25 +30,40 @@ function BeerCard({ beerData, beerLink, onClick }) {
             }
         })
     }
+    
+    if(beerInfo.categoryLevel2 === "Rött vin") {
+        cardType = "redCard";
+    } else if (beerInfo.categoryLevel2 === "Vitt vin") {
+        cardType = "whiteCard"
+        console.log("Vitt vin");
+    } else if (beerInfo.categoryLevel1 === "Öl") {
+        cardType = "beerCard";
+        console.log("Öl");
+    } else if (beerInfo.categoryLevel2 === "Rosévin") {
+        cardType = "roseCard";
+    } else {
+        cardType = "defaultCard";
+    }
 
     return (
-        <div className="beerCard" onClick={() => onClick(beerInfo)}>
+        <div className={cardType} onClick={() => onClick(beerInfo)}>
             <div id="name">
                 <h2>{beerInfo.productNameBold + " " + beerInfo.productNameThin}</h2>
                 <p>{beerInfo.producerName}</p>
-                <a href={beerLink}>This is some text</a>
             </div>
 
             <div id="img">
                 {waitForImg() && <img src={imageURL} alt="Bild på produkten" />}
             </div>
 
-            <div id="volume">
-                <p>Volym: {beerInfo.volume + " ml"}<br />
-                    Pris på SB: {beerInfo.priceInclVat} kr<br />
-                    {beerSimilarity > 29 &&
-                        <p>Bra matchning!</p>}</p>
-
+                <div id="volume">
+                        <p>Volym: {beerInfo.volume + " ml"}<br/>                       
+                        Pris på SB: {beerInfo.priceInclVat} kr<br/> 
+                        {beerSimilarity > 29 && 
+                        <p>Bra matchning!</p>}
+                        {beerSimilarity <= 29 && beerSimilarity > 20 &&
+                        <p>Ok matchning!</p>}
+                        </p>
             </div>
 
             <div className="info">
@@ -75,6 +91,7 @@ function BeerCard({ beerData, beerLink, onClick }) {
             </div>
         </div>
     );
+
 }
 
 export default BeerCard;
