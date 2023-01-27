@@ -1,14 +1,11 @@
 import './BeerCard.css';
 import imageExists from 'image-exists';
-import Link from './Link';
 
-function BeerCard({ beerData, beerLink, onClick }) {
+function BeerCard({ beerData, onClick }) {
 
     const beerInfo = beerData.beer;
     const beerSimilarity = beerData.similarity;
-    const link = beerData.link;
     let cardType = "";
-    //console.log(link)
     let imageURL = 'https://product-cdn.systembolaget.se/productimages/' + beerInfo.productId + '/' + beerInfo.productId + '_400.png';
 
     //Kollar om produktnamnet är tomt, samma som undernament eller samma som bryggeriet för att städa upp namnen lite

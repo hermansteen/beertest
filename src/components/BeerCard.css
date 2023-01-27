@@ -170,8 +170,6 @@ h2 {
   height: 8vh;
   padding: 0px;
   background: rgb(35, 35, 35);
-  background: -moz-linear-gradient(138deg, rgb(35, 35, 35) 40%, rgb(74, 74, 74) 60%, rgb(122, 122, 122) 100%);
-  background: -webkit-linear-gradient(138deg, rgb(35, 35, 35) 40%, rgb(74, 74, 74) 60%, rgb(122, 122, 122) 100%);
   background: linear-gradient(138deg, rgb(35, 35, 35) 40%, rgb(74, 74, 74) 60%, rgb(122, 122, 122) 100%);
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#373737",endColorstr="#7a7a7a",GradientType=1);
   padding-left: 1vh;
@@ -223,8 +221,8 @@ h2 {
 }
 @media only screen and (min-width: 1020px) {
   #img img {
-    max-width: 90px;
-    max-height: 190px;
+    max-width: 70px;
+    max-height: 170px;
   }
 }
 .info {
@@ -296,6 +294,4 @@ h2 {
   align-items: center;
   color: white;
   font-size: 1.5em;
-}
-
-/*# sourceMappingURL=BeerCard.css.map */
+}/*# sourceMappingURL=BeerCard.css.map */

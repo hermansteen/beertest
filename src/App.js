@@ -7,8 +7,7 @@ import * as d3 from 'd3'
 import Input from './components/Input'
 import BeerCard from './components/BeerCard'
 //import wineData from './utils/wine.csv'
-import productLinks from './utils/links.csv'
-import beerData from './utils/products.csv'
+import productData from './utils/products.csv'
 import Instructions from './components/Instructions'
 
 const productDB = productData;
@@ -44,9 +43,8 @@ const loadProducts = async () => {
   })
   //add link to product
   allProducts = allProducts.map(product => {
-    return { ...product, link: productLinks[product.productId]}
+    return { ...product}
   })
-  console.log(allProducts[0].link)
 
   return allProducts.map(product => beerToString(product))
 }
@@ -128,7 +126,7 @@ const App = () => {
         {!loading && results.map(result => {
 
           return (
-            <BeerCard beerData={result} beerLink={productLinks[result.productId]} key={result.beer.id} onClick={findSimilar} />
+            <BeerCard beerData={result} key={result.beer.id} onClick={findSimilar} />
           )
         })}
       </div>
