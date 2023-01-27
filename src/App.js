@@ -8,20 +8,14 @@ import Input from './components/Input'
 import BeerCard from './components/BeerCard'
 import wineData from './utils/wine.csv'
 import productLinks from './utils/links.csv'
-import Slider from './components/Slider.js';
 import beerData from './utils/products.csv'
 import Instructions from './components/Instructions'
 
 const beerDB = beerData;
 const wineDB = wineData;
 
-//Temp bool
-let bBeer = true;
-// console.log(data) 
 
 
-let allBeers = []
-let allWines = []
 let allProducts = []
 
 const beerToString = beer => {
@@ -112,15 +106,13 @@ const App = () => {
 
   //Vissa öl har inget namn på thin, ändrar då titeln till att endast visa namnet på bold
   const findSimilar = (item) => {
-    if (item.productNameBold === "") {
+    if (item.productNameBold === '') {
       setSubtitle('Vin som liknar ' + item.productNameThin);
     } else {
       setSubtitle('Produkter som liknar ' + item.productNameBold);
     }
     search(beerToString(item))
   }
-
-
 
   return (
     <div className='App'>

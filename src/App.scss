@@ -1,5 +1,5 @@
 $fontCommon: 'Bebas Neue', cursive;
-$baseOrangeColor: rgb(182, 118, 0);
+$baseOrangeColor: white;
 $baseBackgroundColor: rgb(35,35,35);
 $headerBackgroundColor: rgba(0,0,0, 0.95);
 $baseRedColor: rgb(117, 0, 0);
@@ -96,12 +96,12 @@ input[type=text] {
   background-color: $baseBackgroundColor;
   position: absolute;
   z-index: 2;
-  color: $baseOrangeColor;
+  color: white;
   font-family: $fontCommon;
 }
 
 #temp {
-  grid-column-start: 2;
+  grid-column-start: 1;
   grid-column-end: 3;
   height:100%;
   background-color: $headerBackgroundColor;
@@ -142,61 +142,7 @@ input[type=text] {
     font-family: $fontCommon;
 }
 
-.switch {
-  position: relative;
-  display: inline-block;
-  width: 60px;
-  height: 34px;
-}
 
-.switch input { 
-  opacity: 0;
-  width: 0;
-  height: 0;
-}
-
-.sliderRound {
-  position: absolute;
-  cursor: pointer;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: $baseOrangeColor ;
-  -webkit-transition: .4s;
-  transition: .4s;
-}
-
-.sliderRound:before {
-  position: absolute;
-  content: "";
-  height: 26px;
-  width: 26px;
-  left: 4px;
-  bottom: 4px;
-  background-color: black;
-  -webkit-transition: .4s;
-  transition: .4s;
-}
-
-input:checked + .sliderRound {
-  background-color: $baseRedColor;
-}
-
-input:checked + .sliderRound:before {
-  -webkit-transform: translateX(26px);
-  -ms-transform: translateX(26px);
-  transform: translateX(26px);
-}
-
-/* Rounded sliders */
-.sliderRound {
-  border-radius: 34px;
-}
-
-.sliderRound:before {
-  border-radius: 50%;
-}
 
   
   

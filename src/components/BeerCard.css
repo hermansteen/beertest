@@ -21,6 +21,50 @@ h2 {
   background-color: rgb(35, 35, 35);
 }
 
+.redCard {
+  display: grid;
+  grid-template-rows: repeat(3, 1fr);
+  grid-template-columns: repeat(6, 1fr);
+  height: 25vh;
+  width: 100%;
+  border: 2px solid rgb(35, 35, 35);
+  border-radius: 10px;
+  background-color: rgb(35, 35, 35);
+}
+
+.whiteCard {
+  display: grid;
+  grid-template-rows: repeat(3, 1fr);
+  grid-template-columns: repeat(6, 1fr);
+  height: 25vh;
+  width: 100%;
+  border: 2px solid rgb(35, 35, 35);
+  border-radius: 10px;
+  background-color: rgb(35, 35, 35);
+}
+
+.roseCard {
+  display: grid;
+  grid-template-rows: repeat(3, 1fr);
+  grid-template-columns: repeat(6, 1fr);
+  height: 25vh;
+  width: 100%;
+  border: 2px solid rgb(35, 35, 35);
+  border-radius: 10px;
+  background-color: rgb(35, 35, 35);
+}
+
+.defaultCard {
+  display: grid;
+  grid-template-rows: repeat(3, 1fr);
+  grid-template-columns: repeat(6, 1fr);
+  height: 25vh;
+  width: 100%;
+  border: 2px solid rgb(35, 35, 35);
+  border-radius: 10px;
+  background-color: rgb(35, 35, 35);
+}
+
 .beerCard:hover {
   border: 2px solid rgb(182, 118, 0);
   background-color: rgb(182, 118, 0);
@@ -31,6 +75,89 @@ h2 {
 }
 .beerCard:hover #volume {
   visibility: visible;
+}
+
+.roseCard:hover {
+  border: 2px solid rgb(221, 116, 116);
+  background-color: rgb(221, 116, 116);
+  cursor: pointer;
+}
+.roseCard:hover #name h2 {
+  color: white;
+}
+.roseCard:hover #volume {
+  visibility: visible;
+}
+
+.defaultCard:hover {
+  border: 2px solid white;
+  background-color: white;
+  cursor: pointer;
+}
+.defaultCard:hover #name h2 {
+  color: white;
+}
+.defaultCard:hover #volume {
+  visibility: visible;
+}
+
+.redCard:hover {
+  border: 2px solid rgb(144, 1, 1);
+  background-color: rgb(144, 1, 1);
+  cursor: pointer;
+}
+.redCard:hover #name h2 {
+  color: white;
+}
+.redCard:hover #volume {
+  visibility: visible;
+}
+
+.whiteCard:hover {
+  border: 2px solid rgb(141, 236, 165);
+  background-color: rgb(141, 236, 165);
+  cursor: pointer;
+}
+.whiteCard:hover #name h2 {
+  color: white;
+}
+.whiteCard:hover #volume {
+  visibility: visible;
+}
+
+.defaultCard #name {
+  color: white;
+}
+.defaultCard #name h2 {
+  color: white;
+}
+
+.redCard #name {
+  color: rgb(144, 1, 1);
+}
+.redCard #name h2 {
+  color: rgb(144, 1, 1);
+}
+
+.roseCard #name {
+  color: rgb(221, 116, 116);
+}
+.roseCard #name h2 {
+  color: rgb(221, 116, 116);
+}
+
+.whiteCard #name {
+  color: rgb(141, 236, 165);
+}
+.whiteCard #name h2 {
+  color: rgb(141, 236, 165);
+}
+
+.beerCard #name {
+  color: rgb(182, 118, 0);
+}
+.beerCard #name h2 {
+  color: rgb(182, 118, 0);
 }
 
 #name {
@@ -47,7 +174,6 @@ h2 {
   background: -webkit-linear-gradient(138deg, rgb(35, 35, 35) 40%, rgb(74, 74, 74) 60%, rgb(122, 122, 122) 100%);
   background: linear-gradient(138deg, rgb(35, 35, 35) 40%, rgb(74, 74, 74) 60%, rgb(122, 122, 122) 100%);
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#373737",endColorstr="#7a7a7a",GradientType=1);
-  color: rgb(182, 118, 0);
   padding-left: 1vh;
 }
 
@@ -60,7 +186,6 @@ h2 {
 }
 
 #name h2 {
-  color: rgb(182, 118, 0);
   padding-top: 0px;
   margin-top: 1vh;
   padding-bottom: 0px;
@@ -86,8 +211,8 @@ h2 {
 
 @media only screen and (max-width: 1020px) {
   #img img {
-    max-width: 80px;
-    max-height: 170px;
+    max-width: 60px;
+    max-height: 150px;
   }
   h2 {
     font-size: 2vh;
@@ -98,8 +223,8 @@ h2 {
 }
 @media only screen and (min-width: 1020px) {
   #img img {
-    max-width: 100px;
-    max-height: 200px;
+    max-width: 90px;
+    max-height: 190px;
   }
 }
 .info {
