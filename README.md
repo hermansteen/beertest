@@ -26,7 +26,7 @@ def scrape():
     save_to_csv(products)
 ```
 
-The scraper was then run on a server and the csv file was downloaded to the local machine. The csv file was then used to create a [json file](/src/utils/products.json) which was used as the database for the app.
+The scraper was then run and the csv file was downloaded to the local machine. The [csv file](/src/utils/products.csv) was then used as the database for the app.
 
 #### Preprocessing
 To prepare the data for our model we first had to discard all the entires of the database which contained null values for the features we intended to use for our model. This was done directly in the scaper to reduce unneccessary calculations and increase performance. Then we have each object a unique id with the js library uuid to be used later on. Stopwords were provided to the library which did the matching. 
@@ -43,7 +43,7 @@ Cosine similarity is a measure of similarity between two vectors. It is calculat
 
 
 #### Implementation
-To match products to each other, we first combined all their features into one string. We concatenated the taste description with the category and aroma description and so on. These strings are for TF-IDF our documents, and all of them together form the corpus. So to find a similar beer, we provide the concatenated string (document) for that beer to the corpus and ask it to find a similar beer (document). This was done in the tiny-tfidf js library. 
+To match products to each other, we first combined all their features into one string. We concatenated the taste description with the category and aroma description and so on. These strings are for TF-IDF our documents, and all of them together form the corpus. So to find a similar beer, we provide the concatenated string (document) for that beer to the corpus and ask it to find a similar beer (document). This was done in the [tiny-tfidf](https://www.npmjs.com/package/tiny-tfidf) js library.
 
 To search for a beer which you want to find similars to, you simply type the name in and the name only is then used as a document for the model and finds the beers which match that name. A problem arises here as only complete words work for searching, and they have to be spelled correctly for the searching to work. Which does not really give a good user experience as it allows for nearly no errors.
 
